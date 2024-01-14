@@ -1,0 +1,9 @@
+*.cache
+bin
+obj
+.config
+*.v2
+.vs
+/AmanUI/node_modules
+/*.zip
+
