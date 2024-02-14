@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="LocationFInderApp.Views.UserListPage">
+
+    <StackLayout>
+        <StackLayout BackgroundColor="#3498db" Padding="10">
+            <Label Text="User List" FontSize="Title" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+
+        <pancake:PancakeView BackgroundColor="#ecf0f1" CornerRadius="15" Margin="10,5,10,5">
+            <pancake:PancakeView.Shadow>
+                <pancake:DropShadow Offset="5,5" BlurRadius="10" Color="Gray"/>
+            </pancake:PancakeView.Shadow>
+
+            <ListView x:Name="userListView"
+                      HasUnevenRows="True"
+                      ItemSelected="UserListView_ItemSelected"
+                      SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="#2c3e50"/>
+                                <Label Text="{Binding Email}" TextColor="#7f8c8d"/>
+                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </pancake:PancakeView>
+
+        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+            <Button Text="Add User" Clicked="OnAddUserClicked" BackgroundColor="#e74c3c" TextColor="White"/>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
+
+
+

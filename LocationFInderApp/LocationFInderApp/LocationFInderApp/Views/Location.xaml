@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LocationFinderApp"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="LocationFInderApp.Views.Location">
+
+    <StackLayout>
+        <StackLayout BackgroundColor="#3498db" Padding="10">
+            <Label Text="Location Finder" FontSize="Title" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+
+        <pancake:PancakeView BackgroundColor="#ecf0f1" CornerRadius="15" Margin="10,5,10,5">
+            <pancake:PancakeView.Shadow>
+                <pancake:DropShadow Offset="5,5" BlurRadius="10" Color="Gray"/>
+            </pancake:PancakeView.Shadow>
+
+            <ListView x:Name="locationListView"
+                      HasUnevenRows="True"
+                      ItemSelected="LocationListView_ItemSelected"
+                      SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Latitude}" FontAttributes="Bold" TextColor="#2c3e50"/>
+                                <Label Text="{Binding Longitude}" TextColor="#7f8c8d"/>
+                                <Label Text="{Binding Timestamp, StringFormat='Timestamp: {0:yyyy-MM-dd HH:mm:ss}'}" TextColor="#7f8c8d"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </pancake:PancakeView>
+
+        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+            <Button Text="Refresh Data" Command="{Binding RefreshCommand}" BackgroundColor="#2ecc71" TextColor="White"/>
+            <Button Text="Track Location" Clicked="saveButton_Clicked" BackgroundColor="#e74c3c" TextColor="White"/>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
+
